@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "configStoreName": {
+            "defaultValue": "ezapp",
+            "type": "String"
+        },
+		"location": {
+            "defaultValue": "centralus",
+            "type": "String"
+        },
+		"sku": {
+            "defaultValue": "centralus",
+            "type": "String"
+        },
+		"apiVersion": {
+            "defaultValue": "2019-11-01-preview",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.AppConfiguration/configurationStores",
+            "apiVersion": "[parameters('apiVersion')]",
+            "name": "[parameters('configStoreName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('sku')]",
+            },
+            "properties": {
+                "encryption": {}
+            }
+        }
+    ]
+}
